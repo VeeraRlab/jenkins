@@ -1,14 +1,17 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Cloning Repo') {
             steps {
-                sh 'echo "Hello World"'
-                sh '''
-                    echo "Multiline shell steps works too"
-                    ls -lah
-                '''
+                checkout scm
             }
+        }
+        stage('Building Docker image') {
+            sh 'docker build -t testtodo .'
+        
+        }
+        stage('Deploy ') {
+            sh 'docker run -p 3100:3100 testtodo'        
         }
     }
 }
