@@ -2,7 +2,7 @@ pipeline {
     agent any
     stages {
         stage('Cloning Repo') {
-            steps {
+            step{
                 checkout scm
             }
         }
