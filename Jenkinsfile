@@ -27,7 +27,7 @@ pipeline {
         }
         stage('Deploy') {            
             steps{
-                sh 'docker run -p 3100:3100 --env DB_HOST=$DB_HOST mkveera1993/mytodo:2.0'
+                sh 'docker run -d -p $APP_PORT:3100 --env DB_HOST=$DB_HOST mkveera1993/mytodo:2.0'
             }
         }
     }      
